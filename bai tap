@@ -1,0 +1,13 @@
+private void frmTabControl_Load(object sender, EventArgs e)
+{
+    this.tabControl2.TabPages.Clear();
+    TabPage tabSV = new TabPage();
+    TabPage tabGV = new TabPage();
+    TabPage tabMH = new TabPage();
+    tabSV.Text = "Sinh viên";
+    tabGV.Text = "Giáo viên";
+    tabMH.Text = "Môn học";
+    this.tabControl2.TabPages.Add(tabSV);
+    this.tabControl2.TabPages.Add(tabGV);
+    this.tabControl2.TabPages.Add(tabMH);
+}
