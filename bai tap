@@ -40,3 +40,34 @@ private void btnCancel_Click(object sender, EventArgs e)
 {
     this.Close();
 }
+
+private void lvListFile_SelectedIndexChanged(object sender, EventArgs e)
+{
+    int i = lvListFile.SelectedItems.Count - 1;
+    if (i >= 0)
+    {
+        ListViewItem lvitem = lvListFile.SelectedItems[0];
+        this.pbImage.ImageLocation = lvitem.Text;
+        toolStripStatusFileName.Text = lvitem.Text;
+    }
+}
+private void btnSave_Click(object sender, EventArgs e)
+{
+    saveFiledlg.Title = "Save file ..";
+    saveFiledlg.Filter = "Image Files (JPEG, BMP, GIF, ..)"
+    + "|(*.jpeg; *.jpg;)|" +
+    "Bitmap files (*.bmp)|*.bmp|" +
+    "All files (*.*)|*.*";
+    if (saveFiledlg.ShowDialog() == DialogResult.OK)
+    {
+        try
+        {
+            Image im = pbImage.Image;
+            im.Save(saveFiledlg.FileName, ImageFormat.Bmp);
+        }
+        catch
+        {
+            MessageBox.Show("Loi luu anh");
+        }
+    }
+}
